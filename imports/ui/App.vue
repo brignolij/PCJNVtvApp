@@ -7,7 +7,10 @@
           <h1>ORPC JNV Message</h1>
         </div>
         <div class="col">
-          <button class="btn btn-light" v-on:click="showNewMessage = !showNewMessage">New Message</button>
+          <button
+            class="btn btn-light"
+            v-on:click="showNewMessage = !showNewMessage"
+          >Nouveau Message</button>
         </div>
       </div>
 
@@ -15,6 +18,7 @@
         <form class="form-group col" @submit.prevent="handleSubmit">
           <div class="row">
             <div class="col-6">
+              <label>Message</label>
               <input
                 required
                 class="form-control"
@@ -24,6 +28,7 @@
               />
             </div>
             <div class="col">
+              <label>Departement</label>
               <select required class="custom-select custom-select-sm" v-model="selectedDepartment">
                 <option
                   v-for="department in departments"
@@ -34,11 +39,12 @@
               </select>
             </div>
             <div class="col">
+              <label>Gravité</label>
               <select class="custom-select custom-select-sm" v-model="messageLevel">
-                <option value="0" selected>0</option>
-                <option value="1" selected>1</option>
-                <option value="2" selected>2</option>
-                <option value="3" selected>3</option>
+                <option value="0" selected>peu important</option>
+                <option value="1" selected>information</option>
+                <option value="2" selected>peu important</option>
+                <option value="3" selected>très important</option>
               </select>
             </div>
           </div>
