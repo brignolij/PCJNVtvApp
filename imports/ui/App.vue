@@ -2,39 +2,48 @@
 <template>
   <div class="container">
     <header>
-      <h1>ORPC JNV Message</h1>
-
-      <form class="new-task form-group" @submit.prevent="handleSubmit">
-        <div class="row">
-          <div class="col-6">
-            <input
-              required
-              class="form-control"
-              type="text"
-              placeholder="Your Message"
-              v-model="newMessage"
-            />
-          </div>
-          <div class="col">
-            <select required class="custom-select custom-select-sm" v-model="selectedDepartment">
-              <option
-                v-for="department in departments"
-                v-bind:key="department.index"
-                v-bind:department="department"
-                v-bind:value="department.name"
-              >{{department.name}}</option>
-            </select>
-          </div>
-          <div class="col">
-            <select class="custom-select custom-select-sm" v-model="messageLevel">
-              <option value="0" selected>0</option>
-              <option value="1" selected>1</option>
-              <option value="2" selected>2</option>
-              <option value="3" selected>3</option>
-            </select>
-          </div>
+      <div class="row">
+        <div class="col-8">
+          <h1>ORPC JNV Message</h1>
         </div>
-      </form>
+        <div class="col">
+          <button class="btn btn-light" v-on:click="showNewMessage = !showNewMessage">New Message</button>
+        </div>
+      </div>
+
+      <div class="row" v-if="showNewMessage">
+        <form class="form-group col" @submit.prevent="handleSubmit">
+          <div class="row">
+            <div class="col-6">
+              <input
+                required
+                class="form-control"
+                type="text"
+                placeholder="Your Message"
+                v-model="newMessage"
+              />
+            </div>
+            <div class="col">
+              <select required class="custom-select custom-select-sm" v-model="selectedDepartment">
+                <option
+                  v-for="department in departments"
+                  v-bind:key="department.index"
+                  v-bind:department="department"
+                  v-bind:value="department.name"
+                >{{department.name}}</option>
+              </select>
+            </div>
+            <div class="col">
+              <select class="custom-select custom-select-sm" v-model="messageLevel">
+                <option value="0" selected>0</option>
+                <option value="1" selected>1</option>
+                <option value="2" selected>2</option>
+                <option value="3" selected>3</option>
+              </select>
+            </div>
+          </div>
+        </form>
+      </div>
     </header>
     <div class="row">
       <div class="col-10">
@@ -70,7 +79,8 @@ export default {
     return {
       newMessage: "",
       selectedDepartment: "",
-      messageLevel: 0
+      messageLevel: 0,
+      showNewMessage: false
     };
   },
 
