@@ -1,7 +1,7 @@
 
 
 <template>
-  <li>{{ this.task.text }}</li>
+  <div class="alert alert-primary">{{ this.task.text }}</div>
 </template>
 
  
