@@ -8,7 +8,7 @@
         </div>
         <div class="col">
           <button
-            class="btn btn-light"
+            class="btn btn-primary"
             v-on:click="showNewMessage = !showNewMessage"
           >Nouveau Message</button>
         </div>
@@ -46,6 +46,10 @@
                 <option value="2" selected>peu important</option>
                 <option value="3" selected>très important</option>
               </select>
+            </div>
+            <div class="col">
+              <br />
+              <button class="btn btn-primary" type="submit">Envoyer</button>
             </div>
           </div>
         </form>
@@ -112,7 +116,7 @@ export default {
       return Messages.find({}, { sort: { createdAt: -1 } }).fetch();
     },
     departments() {
-      return Departments.find({}).fetch();
+      return Departments.find({}, { sort: { name: 1 } }).fetch();
     }
   }
 };
