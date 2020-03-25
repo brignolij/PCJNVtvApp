@@ -1,10 +1,10 @@
 
 
 <template>
-  <div class="alert" v-bind:class="getLevelClass()">
-    {{ this.message.createdAt | moment("H:mm") }} {{ this.message.from }} : {{ this.message.text }}
-    <b>{{this.message.level}}</b>
-  </div>
+  <div
+    class="alert"
+    v-bind:class="getLevelClass()"
+  >{{ this.message.createdAt | moment("H:mm") }} {{ this.message.from }} : {{ this.message.text }}</div>
 </template>
 
 <script>
