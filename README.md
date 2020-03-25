@@ -1,4 +1,10 @@
 # PCJNVtvApp
+
+## install meteor js
+- curl https://install.meteor.com/ | sh
+or
+- https://www.meteor.com/install
+
 ## start project
 - npm install
 - meteor
