@@ -1,0 +1,67 @@
+/* CSS declarations go here */
+//@import '../node_modules/bootstrap/scss/variables'
+$blue: #007bff !default;
+$indigo: #6610f2 !default;
+$purple: #6f42c1 !default;
+$pink: #e83e8c !default;
+$red: #dc3545 !default;
+$orange: #fd7e14 !default;
+$yellow: #ffc107 !default;
+$green: #28a745 !default;
+$teal: #20c997 !default;
+$cyan: #17a2b8 !default;
+a:hover {
+  text-decoration: none !important;
+}
+.main.container {
+  height: calc(100vh - 80px);
+
+  overflow-y: hidden;
+}
+.alert {
+  font-size: 1.5em;
+  color: white !important;
+  &-danger {
+    background-color: $red !important;
+    font-size: 2em;
+  }
+  &-success {
+    background-color: $green !important;
+
+    font-size: 2em;
+  }
+  &-warning {
+    background-color: $orange !important;
+
+    font-size: 1.8em;
+  }
+  &-primary {
+    background-color: $blue !important;
+  }
+  a {
+    color: black;
+    position: absolute;
+    right: 10px;
+  }
+}
+
+.message {
+  &.alert {
+    &-danger {
+      animation: blinker 1s ease infinite;
+    }
+  }
+}
+.legend {
+  margin-top: 40px;
+  .alert {
+    font-size: 1em !important;
+    padding: 4px;
+    text-align: center;
+  }
+}
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}

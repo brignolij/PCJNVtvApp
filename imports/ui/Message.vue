@@ -1,15 +1,17 @@
 
 
 <template>
-  <div class="alert" v-bind:class="getLevelClass()">
-    {{ this.message.createdAt | moment("H:mm") }} {{ this.message.from }} : {{ this.message.text }}
-    <a
-      href="#"
-      @click="deleteMessage()"
-    >
-      <b-icon-x class="float-right"></b-icon-x>
-    </a>
-  </div>
+  <transition name="fade">
+    <div class="message alert" v-bind:class="getLevelClass()">
+      {{ this.message.createdAt | moment("H:mm") }} {{ this.message.from }} : {{ this.message.text }}
+      <a
+        href="#"
+        @click="deleteMessage()"
+      >
+        <b-icon-x></b-icon-x>
+      </a>
+    </div>
+  </transition>
 </template>
 
 <script>
