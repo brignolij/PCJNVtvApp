@@ -4,13 +4,15 @@
     <header>
       <div class="row">
         <div class="col-8">
-          <h1>ORPC JNV Message</h1>
+          <h1>PC région Nord - Notifications</h1>
         </div>
         <div class="col">
+          <button class="btn btn-primary" v-on:click="showNewMessage = !showNewMessage">Gérer</button>
           <button
-            class="btn btn-primary"
-            v-on:click="showNewMessage = !showNewMessage"
-          >Nouveau Message</button>
+            class="btn btn-danger"
+            @click="deleteAllMessages()"
+            v-if="showNewMessage"
+          >Tout Supprimer</button>
         </div>
       </div>
 
@@ -18,12 +20,12 @@
         <form class="form-group col" @submit.prevent="handleSubmit">
           <div class="row">
             <div class="col-6">
-              <label>Message</label>
+              <label>Notification</label>
               <input
                 required
                 class="form-control"
                 type="text"
-                placeholder="Your Message"
+                placeholder="Your Notification"
                 v-model="newMessage"
               />
             </div>
@@ -43,8 +45,7 @@
               <select class="custom-select custom-select-sm" v-model="messageLevel">
                 <option value="0" selected>peu important</option>
                 <option value="1" selected>information</option>
-                <option value="2" selected>peu important</option>
-                <option value="3" selected>très important</option>
+                <option value="2" selected>très important</option>
               </select>
             </div>
             <div class="col">
@@ -72,15 +73,14 @@
 
 <script>
 import Vue from "vue";
-import Task from "./Task.vue";
+
 import Message from "./Message.vue";
 import Department from "./Department.vue";
-import { Tasks } from "./../api/tasks.js";
+
 import { Messages } from "./../api/messages.js";
 import { Departments } from "./../api/departments";
 export default {
   components: {
-    Task,
     Message,
     Department
   },
@@ -106,12 +106,14 @@ export default {
       // Clear form
       this.messageLevel = 0;
       this.newMessage = "";
+    },
+    deleteAllMessages() {
+      this.messages.forEach(message => {
+        Messages.remove(message._id);
+      });
     }
   },
   meteor: {
-    tasks() {
-      return Tasks.find({}).fetch();
-    },
     messages() {
       return Messages.find({}, { sort: { createdAt: -1 } }).fetch();
     },
